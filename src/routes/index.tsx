@@ -191,6 +191,53 @@ function Home() {
         </div>
       </section>
 
+      <section className="border-b border-border px-4 py-16 sm:px-10 sm:py-20">
+        <div className="mx-auto max-w-5xl">
+          <SectionLabel>Research Papers</SectionLabel>
+          <h2 className="mb-10 font-display text-[clamp(1.6rem,3.5vw,2.5rem)] font-black">
+            Original research in African cognitive AI{" "}
+            <em className="text-amber italic">and interpretability.</em>
+          </h2>
+          <div className="grid grid-cols-1 gap-0.5 md:grid-cols-2">
+            {[
+              {
+                to: "/papers" as const,
+                t: "All Papers",
+                d: "Download research papers, grant proposals, and technical specifications.",
+              },
+              {
+                to: "/papers#benchmark-paradox" as const,
+                t: "Benchmark Paradox",
+                D: "Critical analysis of AI evaluation frameworks.",
+                d: "How standard benchmarks fail African cognitive frameworks.",
+              },
+              {
+                to: "/papers#cultural-bridge" as const,
+                t: "Cultural Bridge SAE",
+                d: "Sparse autoencoder analysis for African-language features.",
+              },
+              {
+                to: "/papers#study2-proverb" as const,
+                t: "Proverb Activation Library",
+                d: "Ground-truth datasets for Yoruba reasoning primitives.",
+              },
+            ].map((c) => (
+              <Link
+                key={c.to}
+                to={c.to}
+                className="group flex items-start justify-between gap-4 border border-border bg-surface p-5 transition-colors hover:border-amber"
+              >
+                <div>
+                  <p className="font-display text-lg font-bold text-head group-hover:text-amber">{c.t}</p>
+                  <p className="mt-1 text-sm text-body">{c.d}</p>
+                </div>
+                <ArrowRight className="mt-1 size-4 shrink-0 text-muted" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="px-4 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <SectionLabel>Pages in this brief</SectionLabel>

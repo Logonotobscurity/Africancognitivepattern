@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-xpU3ZJXC.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BwWqMek5.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspace/src/routes/__root.tsx",
@@ -8,44 +8,50 @@ var tsrStartManifest = () => ({ routes: {
 			"/contact",
 			"/essay",
 			"/execute",
-			"/map"
+			"/map",
+			"/papers"
 		],
-		preloads: ["/assets/index-D_P5-zi6.js"],
+		preloads: ["/assets/index-BjKKnVbx.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-D_P5-zi6.js"
+			src: "/assets/index-BjKKnVbx.js"
 		} }]
 	},
 	"/": {
 		filePath: "/workspace/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-DgkHx019.js", "/assets/content-CFK2oqfP.js"]
+		preloads: ["/assets/routes-CetZ8q0p.js", "/assets/content-CFK2oqfP.js"]
 	},
 	"/brief": {
 		filePath: "/workspace/src/routes/brief.tsx",
 		children: void 0,
-		preloads: ["/assets/brief-BLxmphwc.js", "/assets/content-CFK2oqfP.js"]
+		preloads: ["/assets/brief-DxtwUmh9.js", "/assets/content-CFK2oqfP.js"]
 	},
 	"/contact": {
 		filePath: "/workspace/src/routes/contact.tsx",
 		children: void 0,
-		preloads: ["/assets/contact-BR-rId4P.js", "/assets/content-CFK2oqfP.js"]
+		preloads: ["/assets/contact-BY2Hke8R.js", "/assets/content-CFK2oqfP.js"]
 	},
 	"/essay": {
 		filePath: "/workspace/src/routes/essay.tsx",
 		children: void 0,
-		preloads: ["/assets/essay-W883QEbu.js"]
+		preloads: ["/assets/essay-BA0s2gnT.js"]
 	},
 	"/execute": {
 		filePath: "/workspace/src/routes/execute.tsx",
 		children: void 0,
-		preloads: ["/assets/execute-BdI0JQ5j.js", "/assets/content-CFK2oqfP.js"]
+		preloads: ["/assets/execute-CwVm3YmP.js", "/assets/content-CFK2oqfP.js"]
 	},
 	"/map": {
 		filePath: "/workspace/src/routes/map.tsx",
 		children: void 0,
-		preloads: ["/assets/map-Bv5rQaZV.js", "/assets/content-CFK2oqfP.js"]
+		preloads: ["/assets/map-D3bFZ_9N.js", "/assets/content-CFK2oqfP.js"]
+	},
+	"/papers": {
+		filePath: "/workspace/src/routes/papers.tsx",
+		children: void 0,
+		preloads: ["/assets/papers-CTJ_Kl26.js"]
 	}
 } });
 //#endregion

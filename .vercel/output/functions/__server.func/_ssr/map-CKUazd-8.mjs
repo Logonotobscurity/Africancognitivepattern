@@ -1,7 +1,7 @@
 import { b as require_jsx_runtime, v as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { r as Eyebrow } from "./router-B6q0aCxa.mjs";
+import { r as Eyebrow } from "./router-C6r2tvIp.mjs";
 import { g as synthThreads, m as sources } from "./content-HJq9tygl.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/map-D0D1JZrC.js
+//#region node_modules/.nitro/vite/services/ssr/assets/map-CKUazd-8.js
 var import_jsx_runtime = require_jsx_runtime();
 var recs = [
 	{

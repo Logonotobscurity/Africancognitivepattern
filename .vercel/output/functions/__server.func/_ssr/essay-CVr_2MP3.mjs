@@ -1,6 +1,6 @@
 import { b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-import { r as Eyebrow } from "./router-B6q0aCxa.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/essay-f0KwXGGY.js
+import { r as Eyebrow } from "./router-C6r2tvIp.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/essay-CVr_2MP3.js
 var import_jsx_runtime = require_jsx_runtime();
 function Essay() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [

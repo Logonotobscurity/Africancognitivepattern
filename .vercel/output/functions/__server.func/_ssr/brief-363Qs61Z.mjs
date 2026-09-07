@@ -1,7 +1,7 @@
 import { b as require_jsx_runtime, v as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { i as SectionLabel, r as Eyebrow } from "./router-B6q0aCxa.mjs";
+import { i as SectionLabel, r as Eyebrow } from "./router-C6r2tvIp.mjs";
 import { _ as thread1, a as landingCopy, f as positioning, l as offers, n as calendar, o as lfaRows, s as mission, t as audits, v as tools, y as waterfall } from "./content-HJq9tygl.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/brief-s0esa3tV.js
+//#region node_modules/.nitro/vite/services/ssr/assets/brief-363Qs61Z.js
 var import_jsx_runtime = require_jsx_runtime();
 function Brief() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [

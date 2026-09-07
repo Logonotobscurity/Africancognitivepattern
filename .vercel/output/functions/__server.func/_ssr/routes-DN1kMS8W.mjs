@@ -1,8 +1,8 @@
 import { b as require_jsx_runtime, v as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as ArrowRight } from "../_libs/lucide-react.mjs";
-import { i as SectionLabel, r as Eyebrow } from "./router-B6q0aCxa.mjs";
+import { s as ArrowRight } from "../_libs/lucide-react.mjs";
+import { i as SectionLabel, r as Eyebrow } from "./router-C6r2tvIp.mjs";
 import { c as moat, h as stats, l as offers, p as researchStreams, s as mission } from "./content-HJq9tygl.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BhYpNYgf.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DN1kMS8W.js
 var import_jsx_runtime = require_jsx_runtime();
 function Home() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
@@ -223,6 +223,62 @@ function Home() {
 								})
 							]
 						}, r.label))
+					})
+				]
+			})
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+			className: "border-b border-border px-4 py-16 sm:px-10 sm:py-20",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mx-auto max-w-5xl",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionLabel, { children: "Research Papers" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
+						className: "mb-10 font-display text-[clamp(1.6rem,3.5vw,2.5rem)] font-black",
+						children: [
+							"Original research in African cognitive AI",
+							" ",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("em", {
+								className: "text-amber italic",
+								children: "and interpretability."
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "grid grid-cols-1 gap-0.5 md:grid-cols-2",
+						children: [
+							{
+								to: "/papers",
+								t: "All Papers",
+								d: "Download research papers, grant proposals, and technical specifications."
+							},
+							{
+								to: "/papers#benchmark-paradox",
+								t: "Benchmark Paradox",
+								D: "Critical analysis of AI evaluation frameworks.",
+								d: "How standard benchmarks fail African cognitive frameworks."
+							},
+							{
+								to: "/papers#cultural-bridge",
+								t: "Cultural Bridge SAE",
+								d: "Sparse autoencoder analysis for African-language features."
+							},
+							{
+								to: "/papers#study2-proverb",
+								t: "Proverb Activation Library",
+								d: "Ground-truth datasets for Yoruba reasoning primitives."
+							}
+						].map((c) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+							to: c.to,
+							className: "group flex items-start justify-between gap-4 border border-border bg-surface p-5 transition-colors hover:border-amber",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "font-display text-lg font-bold text-head group-hover:text-amber",
+								children: c.t
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-sm text-body",
+								children: c.d
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "mt-1 size-4 shrink-0 text-muted" })]
+						}, c.to))
 					})
 				]
 			})

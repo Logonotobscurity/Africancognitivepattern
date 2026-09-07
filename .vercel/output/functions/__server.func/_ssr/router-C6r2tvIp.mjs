@@ -4,7 +4,7 @@ import { n as TriangleAlert, r as Menu, t as X } from "../_libs/lucide-react.mjs
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-B6q0aCxa.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-C6r2tvIp.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -438,9 +438,9 @@ function CopyBlock({ text, label }) {
 		})]
 	});
 }
-var styles_default = "/assets/styles-B0NUDegz.css";
+var styles_default = "/assets/styles-O4bgqRrh.css";
 var APP_NAME = "LOG_ON";
-var Route$6 = createRootRoute({
+var Route$7 = createRootRoute({
 	head: () => ({
 		meta: [
 			{ charSet: "utf-8" },
@@ -505,69 +505,79 @@ var Route$6 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter$5 = () => import("./routes-BhYpNYgf.mjs");
-var Route$5 = createFileRoute("/")({
-	component: lazyRouteComponent($$splitComponentImporter$5, "component"),
+var $$splitComponentImporter$6 = () => import("./routes-DN1kMS8W.mjs");
+var Route$6 = createFileRoute("/")({
+	component: lazyRouteComponent($$splitComponentImporter$6, "component"),
 	head: () => ({ meta: [{ title: "LOG_ON — Direction Infrastructure for African AI" }] })
 });
-var $$splitComponentImporter$4 = () => import("./brief-s0esa3tV.mjs");
-var Route$4 = createFileRoute("/brief")({
-	component: lazyRouteComponent($$splitComponentImporter$4, "component"),
+var $$splitComponentImporter$5 = () => import("./brief-363Qs61Z.mjs");
+var Route$5 = createFileRoute("/brief")({
+	component: lazyRouteComponent($$splitComponentImporter$5, "component"),
 	head: () => ({ meta: [{ title: "Action Brief — LOG_ON" }] })
 });
-var $$splitComponentImporter$3 = () => import("./contact-gD006e-Q.mjs");
-var Route$3 = createFileRoute("/contact")({
-	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
+var $$splitComponentImporter$4 = () => import("./contact-Dsbc_qEf.mjs");
+var Route$4 = createFileRoute("/contact")({
+	component: lazyRouteComponent($$splitComponentImporter$4, "component"),
 	head: () => ({ meta: [{ title: "Get an Audit — LOG_ON" }] })
 });
-var $$splitComponentImporter$2 = () => import("./essay-f0KwXGGY.mjs");
-var Route$2 = createFileRoute("/essay")({
-	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
+var $$splitComponentImporter$3 = () => import("./essay-CVr_2MP3.mjs");
+var Route$3 = createFileRoute("/essay")({
+	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	head: () => ({ meta: [{ title: "The Agent Onboarding Problem — LOG_ON" }] })
 });
-var $$splitComponentImporter$1 = () => import("./execute-a55sg0z0.mjs");
-var Route$1 = createFileRoute("/execute")({
-	component: lazyRouteComponent($$splitComponentImporter$1, "component"),
+var $$splitComponentImporter$2 = () => import("./execute-DX0z5LyM.mjs");
+var Route$2 = createFileRoute("/execute")({
+	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
 	head: () => ({ meta: [{ title: "Execution Command Centre — LOG_ON" }] })
 });
-var $$splitComponentImporter = () => import("./map-D0D1JZrC.mjs");
-var Route = createFileRoute("/map")({
-	component: lazyRouteComponent($$splitComponentImporter, "component"),
+var $$splitComponentImporter$1 = () => import("./map-CKUazd-8.mjs");
+var Route$1 = createFileRoute("/map")({
+	component: lazyRouteComponent($$splitComponentImporter$1, "component"),
 	head: () => ({ meta: [{ title: "The Direction Problem — LOG_ON" }] })
 });
+var $$splitComponentImporter = () => import("./papers-Dr15djxF.mjs");
+var Route = createFileRoute("/papers")({
+	component: lazyRouteComponent($$splitComponentImporter, "component"),
+	head: () => ({ meta: [{ title: "Research Papers — LOG_ON" }] })
+});
 var rootRouteChildren = {
-	IndexRoute: Route$5.update({
+	IndexRoute: Route$6.update({
 		id: "/",
 		path: "/",
-		getParentRoute: () => Route$6
+		getParentRoute: () => Route$7
 	}),
-	BriefRoute: Route$4.update({
+	BriefRoute: Route$5.update({
 		id: "/brief",
 		path: "/brief",
-		getParentRoute: () => Route$6
+		getParentRoute: () => Route$7
 	}),
-	ContactRoute: Route$3.update({
+	ContactRoute: Route$4.update({
 		id: "/contact",
 		path: "/contact",
-		getParentRoute: () => Route$6
+		getParentRoute: () => Route$7
 	}),
-	EssayRoute: Route$2.update({
+	EssayRoute: Route$3.update({
 		id: "/essay",
 		path: "/essay",
-		getParentRoute: () => Route$6
+		getParentRoute: () => Route$7
 	}),
-	ExecuteRoute: Route$1.update({
+	ExecuteRoute: Route$2.update({
 		id: "/execute",
 		path: "/execute",
-		getParentRoute: () => Route$6
+		getParentRoute: () => Route$7
 	}),
-	MapRoute: Route.update({
+	MapRoute: Route$1.update({
 		id: "/map",
 		path: "/map",
-		getParentRoute: () => Route$6
+		getParentRoute: () => Route$7
+	}),
+	PapersRoute: Route.update({
+		id: "/papers",
+		path: "/papers",
+		getParentRoute: () => Route$7
 	})
 };
-var routeTree = Route$6._addFileChildren(rootRouteChildren)._addFileTypes();
+var routeTree = Route$7._addFileChildren(rootRouteChildren)._addFileTypes();
 var router_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 function getRouter() {
 	return createRouter({
