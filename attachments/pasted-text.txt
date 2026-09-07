@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LOG_ON Action Brief — 6 Recommendations Executed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --void:#08090A;--surface:#0E0F11;--panel:#131417;--border:#1E1F23;
+  --mid:#2E2F35;--muted:#5A5B65;--body:#9898A8;--head:#E0E0EE;--white:#F2F2F8;
+  --amber:#D4952A;--amber-dim:#7A5518;--amber-pale:#1E1508;--amber-bright:#F0B050;
+  --teal:#1E8C6A;--teal-pale:#0A1A14;
+  --red:#B83228;--red-pale:#1A0C0B;
+  --blue:#3068C8;--blue-pale:#0A1020;
+  --green:#2A7A50;--green-pale:#0A1810;
+  --purple:#6850C0;--purple-pale:#100E20;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--body);font-family:'Instrument Sans',sans-serif;font-size:16px;line-height:1.75;overflow-x:hidden}
+
+/* ── TOP BAR ── */
+.topbar{position:sticky;top:0;z-index:200;background:rgba(8,9,10,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 40px}
+.tb-brand{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;color:var(--amber)}
+.tb-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em}
+.tb-progress{display:flex;gap:4px;align-items:center}
+.tp-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .2s}
+.tp-dot.done{background:var(--amber)}
+.tp-dot.active{background:var(--amber-bright);box-shadow:0 0 6px var(--amber)}
+
+/* ── COVER ── */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 64px 72px;border-bottom:2px solid var(--amber);position:relative;overflow:hidden}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.15}
+.cover-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(212,149,42,.05) 0%,transparent 70%);pointer-events:none}
+.cover-tag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:28px;position:relative;z-index:1;display:flex;align-items:center;gap:14px}
+.cover-tag::before{content:'';width:36px;height:2px;background:var(--amber)}
+.cover h1{font-family:'Fraunces',serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:.95;color:var(--white);letter-spacing:-.03em;margin-bottom:28px;position:relative;z-index:1}
+.cover h1 em{font-style:italic;color:var(--amber)}
+.cover-sub{font-family:'Fraunces',serif;font-style:italic;font-size:1.25rem;color:var(--muted);max-width:560px;line-height:1.55;margin-bottom:52px;position:relative;z-index:1}
+.cover-meta-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:800px;position:relative;z-index:1}
+.cm{padding:18px 20px;background:var(--surface);border-top:2px solid var(--amber-dim)}
+.cm-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--amber-dim);margin-bottom:6px}
+.cm-val{font-size:.88rem;color:var(--head);font-weight:700}
+
+/* ── REC WRAPPER ── */
+.rec-page{border-bottom:1px solid var(--border)}
+.rec-header{background:var(--surface);border-bottom:1px solid var(--border);padding:40px 64px 32px;display:flex;align-items:flex-start;gap:32px}
+.rh-num{font-family:'Fraunces',serif;font-size:5rem;font-weight:900;line-height:1;min-width:80px;color:var(--border)}
+.rh-content{}
+.rh-domain{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.rh-title{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.5vw,2.4rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:10px}
+.rh-title em{font-style:italic;color:var(--amber)}
+.rh-desc{font-size:.9rem;color:var(--body);max-width:680px;line-height:1.6}
+
+/* ── DELIVERABLE AREA ── */
+.deliverable{padding:48px 64px;max-width:1100px;margin:0 auto}
+
+/* ── SECTION LABELS ── */
+.dl-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.dl-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--amber-dim),transparent);max-width:200px;opacity:.4}
+
+/* ── LFA TABLE ── */
+.lfa-wrap{margin:0 0 40px}
+.lfa-table{width:100%;border-collapse:collapse}
+.lfa-table th{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:12px 16px;background:var(--amber);color:var(--void);text-align:left;border:none}
+.lfa-table td{padding:16px 18px;vertical-align:top;line-height:1.6;border-bottom:1px solid var(--border);font-size:.88rem}
+.lfa-table td:first-child{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--amber);background:var(--panel);white-space:nowrap;width:130px}
+.lfa-table tr:nth-child(even) td:not(:first-child){background:var(--surface)}
+.lfa-table tr:nth-child(odd) td:not(:first-child){background:var(--void)}
+.lfa-table td strong{color:var(--head)}
+.lfa-table td em{font-style:italic;color:var(--muted);font-size:.82rem}
+
+/* ── OFFER TIERS ── */
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:32px}
+.offer-card{padding:28px 24px;position:relative;overflow:hidden}
+.offer-card.t1{background:var(--teal-pale);border-top:3px solid var(--teal)}
+.offer-card.t2{background:var(--amber-pale);border-top:3px solid var(--amber)}
+.offer-card.t3{background:var(--purple-pale);border-top:3px solid var(--purple)}
+.oc-tier{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:10px}
+.t1 .oc-tier{color:var(--teal)} .t2 .oc-tier{color:var(--amber)} .t3 .oc-tier{color:var(--purple)}
+.oc-price{font-family:'Fraunces',serif;font-size:2rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:4px}
+.oc-name{font-size:.95rem;font-weight:700;color:var(--head);margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.oc-what{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.15em;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.oc-item{font-size:.83rem;color:var(--body);padding:6px 0;border-bottom:1px solid var(--border);line-height:1.5}
+.oc-item:last-of-type{border-bottom:none}
+.oc-deliver{margin-top:14px;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--amber);line-height:1.5;letter-spacing:.04em}
+.t1 .oc-deliver{background:rgba(30,140,106,.12);border-left:2px solid var(--teal)}
+.t2 .oc-deliver{background:rgba(212,149,42,.1);border-left:2px solid var(--amber)}
+.t3 .oc-deliver{background:rgba(104,80,192,.12);border-left:2px solid var(--purple)}
+
+/* ── LANDING PAGE COPY ── */
+.copy-block{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--amber);padding:28px 32px;margin:20px 0}
+.copy-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--amber-dim);text-transform:uppercase;margin-bottom:8px}
+.copy-text{font-size:.95rem;color:var(--head);line-height:1.65}
+.copy-text strong{color:var(--amber)}
+.copy-text em{font-style:italic;color:var(--muted)}
+
+/* ── THREAD CARDS ── */
+.thread-stack{display:flex;flex-direction:column;gap:2px;margin-bottom:32px}
+.thread-card{background:var(--surface);padding:24px 28px;border-left:3px solid var(--amber-dim);cursor:pointer;transition:border-color .2s}
+.thread-card:hover{border-left-color:var(--amber)}
+.tc-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.tc-platform{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--amber);text-transform:uppercase}
+.tc-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
+.tc-hook{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--white);font-weight:700;line-height:1.3;margin-bottom:8px}
+.tc-body{font-size:.85rem;color:var(--body);line-height:1.65}
+.tc-body strong{color:var(--head)}
+.tc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);padding:3px 8px;border:1px solid var(--border)}
+
+/* ── AUDIT MATRIX ── */
+.audit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-bottom:32px}
+.audit-card{background:var(--surface);padding:24px;border-top:2px solid var(--border)}
+.audit-card.critical{border-top-color:var(--red)}
+.audit-card.high{border-top-color:var(--amber)}
+.audit-card.medium{border-top-color:var(--teal)}
+.ac-project{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px}
+.critical .ac-project{color:var(--red)} .high .ac-project{color:var(--amber)} .medium .ac-project{color:var(--teal)}
+.ac-name{font-size:.95rem;font-weight:700;color:var(--head);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.ac-row{display:flex;gap:12px;margin-bottom:8px;align-items:flex-start}
+.ac-icon{font-family:'JetBrains Mono',monospace;font-size:11px;min-width:20px;color:var(--muted)}
+.ac-text{font-size:.83rem;color:var(--body);line-height:1.5}
+.ac-text strong{color:var(--head)}
+.ac-action{margin-top:12px;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--amber);background:var(--amber-pale);border-left:2px solid var(--amber);letter-spacing:.04em;line-height:1.5}
+
+/* ── TOOLING PRIORITY ── */
+.tool-list{display:flex;flex-direction:column;gap:2px;margin-bottom:32px}
+.tool-item{display:grid;grid-template-columns:200px 1fr;background:var(--surface)}
+.tool-priority{padding:20px 24px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
+.tp-rank{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:900;color:var(--border);line-height:1}
+.tp-type{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-top:4px}
+.tool-body{padding:20px 28px}
+.tool-name{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.tool-desc{font-size:.85rem;color:var(--body);line-height:1.6;margin-bottom:10px}
+.tool-desc strong{color:var(--head)}
+.tool-action{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:.04em}
+
+/* ── MASTER BRIEF ── */
+.master{background:var(--amber-pale);border-top:3px solid var(--amber);border-bottom:3px solid var(--amber);padding:56px 64px;margin:0}
+.master-inner{max-width:1000px;margin:0 auto}
+.master-eye{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:24px}
+.master h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:900;color:var(--white);line-height:1.05;margin-bottom:36px;letter-spacing:-.02em}
+.master h2 em{font-style:italic;color:var(--amber)}
+.master-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:40px}
+.mg{padding:24px;background:rgba(0,0,0,.4)}
+.mg-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-bright);margin-bottom:10px}
+.mg p{font-size:.88rem;color:var(--body);line-height:1.65}
+.mg p strong{color:var(--amber-bright)}
+.positioning-stmt{background:var(--void);border:1px solid var(--amber);padding:32px 40px;margin-top:0}
+.ps-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.ps-text{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--white);line-height:1.55;font-style:italic}
+.ps-text em{color:var(--amber);font-style:normal}
+
+/* ── ACTION CHECKLIST ── */
+.checklist{background:var(--surface);border:1px solid var(--border);margin:32px 0}
+.cl-head{background:var(--amber);padding:12px 24px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--void)}
+.cl-item{display:flex;gap:16px;padding:14px 24px;border-bottom:1px solid var(--border);align-items:flex-start}
+.cl-item:last-child{border-bottom:none}
+.cl-box{width:16px;height:16px;border:2px solid var(--amber-dim);flex-shrink:0;margin-top:2px}
+.cl-text{font-size:.88rem;color:var(--body);line-height:1.5}
+.cl-text strong{color:var(--head)}
+.cl-week{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--amber-dim);margin-left:8px;letter-spacing:.1em}
+
+/* ── CONTENT WATERFALL ── */
+.waterfall{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-bottom:28px}
+.wf-col{background:var(--surface);display:flex;flex-direction:column}
+.wf-head{padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.linkedin .wf-head{background:rgba(48,104,200,.2);color:var(--blue)}
+.youtube .wf-head{background:rgba(184,50,40,.2);color:var(--red)}
+.podcast .wf-head{background:rgba(104,80,192,.2);color:var(--purple)}
+.twitter .wf-head{background:rgba(30,140,106,.2);color:var(--teal)}
+.carousel .wf-head{background:rgba(212,149,42,.15);color:var(--amber)}
+.wf-item{padding:12px 14px;border-bottom:1px solid var(--border);font-size:.78rem;color:var(--body);line-height:1.5;flex:1}
+.wf-item strong{color:var(--head);font-size:.82rem;display:block;margin-bottom:3px}
+
+/* ── PULL QUOTE ── */
+.pq{margin:32px 0;padding:24px 32px;border-left:4px solid var(--amber);background:var(--panel)}
+.pq-text{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--head);line-height:1.5}
+.pq-src{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:10px;letter-spacing:.08em}
+
+/* ── FOOT ── */
+footer{background:var(--void);border-top:2px solid var(--amber);padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.f-brand{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;color:var(--amber)}
+.f-text{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .cover{padding:72px 24px 48px}
+  .rec-header{padding:28px 24px;flex-direction:column;gap:8px}
+  .deliverable{padding:32px 24px}
+  .offer-grid,.master-grid,.waterfall{grid-template-columns:1fr}
+  .audit-grid{grid-template-columns:1fr}
+  .tool-item{grid-template-columns:1fr;display:block}
+  .cover-meta-row{grid-template-columns:1fr}
+  .master{padding:40px 24px}
+  .topbar{padding:0 16px}
+  footer{padding:20px 16px}
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.cover>*{animation:fadeUp .7s ease both}
+.cover-tag{animation-delay:.1s}.cover h1{animation-delay:.25s}
+.cover-sub{animation-delay:.4s}.cover-meta-row{animation-delay:.55s}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <span class="tb-brand">LOG_ON</span>
+  <span class="tb-meta">Action Brief — 6 Recommendations Executed — April 2026</span>
+  <div class="tb-progress">
+    <div class="tp-dot done" title="Rec 1: LFA"></div>
+    <div class="tp-dot done" title="Rec 2: Agent Audit"></div>
+    <div class="tp-dot done" title="Rec 3: Offer Stack"></div>
+    <div class="tp-dot done" title="Rec 4: Content Waterfall"></div>
+    <div class="tp-dot done" title="Rec 5: Cognitive Tooling"></div>
+    <div class="tp-dot done" title="Rec 6: Master Brief"></div>
+  </div>
+</header>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-tag">LOG_ON AI Solution Agency &nbsp;·&nbsp; Lagos, Nigeria &nbsp;·&nbsp; April 2026</div>
+  <h1>Action<br/><em>Brief.</em></h1>
+  <p class="cover-sub">Six recommendations. Six deliverables. Everything filled in, production-ready, specific to LOG_ON. Nothing left as homework.</p>
+  <div class="cover-meta-row">
+    <div class="cm"><div class="cm-label">This Document Contains</div><div class="cm-val">6 Complete Deliverables</div></div>
+    <div class="cm"><div class="cm-label">Derived From</div><div class="cm-val">Williams · Derosiaux · Koe · Prior Work</div></div>
+    <div class="cm"><div class="cm-label">Implementation Horizon</div><div class="cm-val">7–30 Days</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     REC 1 — THE LFA
+════════════════════════════════════════════════════════ -->
+<section class="rec-page" id="rec1">
+  <div class="rec-header">
+    <div class="rh-num">01</div>
+    <div class="rh-content">
+      <div class="rh-domain">From Williams · LFA Framework</div>
+      <h2 class="rh-title">LOG_ON's <em>Logical Framework</em> — Built</h2>
+      <p class="rh-desc">This is the one-page document that makes every subsequent proposal, pitch, grant application, and client conversation easier. It defines the logic chain from your daily work to civilisational impact. Use it as the opening page of every brief you send.</p>
+    </div>
+  </div>
+  <div class="deliverable">
+    <div class="dl-label">Deliverable 1 — LOG_ON Logical Framework (LFA)</div>
+    <div class="lfa-wrap">
+      <table class="lfa-table">
+        <thead><tr><th>Layer</th><th>LOG_ON Definition</th><th>Evidence / Indicators</th><th>Assumptions</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>IMPACT<br/><em>Long-term</em></td>
+            <td><strong>African cognitive sovereignty in the age of AI.</strong> Frontier LLMs reason in African epistemological frameworks as first-class capabilities — not as fine-tuned adaptations of Western models. African organisations deploy AI systems aligned to African values, operating on African infrastructure, governed by African institutions.</td>
+            <td>Adoption of African-language reasoning primitives in ≥2 frontier model training pipelines. Academic recognition of African cognitive frameworks as valid AI architectural foundations. Measurable reduction of cultural bias scores in cross-lingual interpretability benchmarks.</td>
+            <td>African organisations will pay for culturally-aligned AI systems once the value is documented. The research community will respond to evidence-based arguments about cultural bias. Frontier labs will adopt external research findings when presented with undeniable interpretability data.</td>
+          </tr>
+          <tr>
+            <td>OUTCOMES<br/><em>Medium-term</em></td>
+            <td><strong>Three outcome streams running in parallel:</strong><br/>1. Research — LOG_ON's interpretability work is cited, funded, and replicated by African and international researchers.<br/>2. Commercial — African organisations use LOG_ON's direction infrastructure to deploy culturally-aware AI.<br/>3. Public — A growing body of public work establishes LOG_ON as the definitive voice on African AI epistemology.</td>
+            <td>Grant awarded (Schmidt Sciences or equivalent). ≥3 paying clients on consulting retainer. Essay series reaches 10,000+ readers. ≥1 academic paper submitted to ACL/NeurIPS/AfricaNLP. LOG_ON cited in ≥2 external research publications.</td>
+            <td>LOG_ON maintains consistent output pace. Research quality is sufficient for peer recognition. Commercial clients exist who understand the problem and have budget. Public audience grows through content waterfall (Rec 4).</td>
+          </tr>
+          <tr>
+            <td>OUTPUTS<br/><em>What we produce</em></td>
+            <td><strong>Research Outputs:</strong> Cultural Bridge Tech toolkit, Proverb Activation Library, Cross-lingual sparse autoencoder bias maps, African NER benchmark suite, Schmidt Sciences grant proposal.<br/><strong>Commercial Outputs:</strong> Cultural Bias Rapid Audits, Agent Environment Design briefs, African AI Direction Consulting engagements (see Rec 3).<br/><strong>Content Outputs:</strong> Weekly essays, LinkedIn/YouTube/podcast content waterfall (see Rec 4), AgentBridge Africa, LISTNER, GigPilot, SafeChain MVP builds.</td>
+            <td>Per quarter: ≥2 essays published, ≥1 research output, ≥1 commercial engagement, ≥1 grant application or response.</td>
+            <td>Quality is maintained across output volume. Content and research reinforce each other — essays drive visibility, research drives credibility, commercial work funds both.</td>
+          </tr>
+          <tr>
+            <td>INPUTS<br/><em>What we invest</em></td>
+            <td><strong>Time:</strong> Research (20h/week), Commercial delivery (15h/week), Content production (10h/week), Business development (5h/week).<br/><strong>Infrastructure:</strong> Claude API / Anthropic access, African language corpora (Owomoyela, Masakhane datasets), Compute for sparse autoencoder analysis, LOG_ON website + distribution channels.<br/><strong>Network:</strong> AfricaNLP community, Masakhane, DAIR Institute, Schmidt Sciences programme officers, existing client relationships.</td>
+            <td>API costs manageable at current research volume. Time allocation sustainable for one-person operation. Network engagement consistent and reciprocal.</td>
+            <td>Compute costs remain accessible. API access continues. Health and capacity maintained. Network relationships cultivated, not just extracted.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dl-label">LOG_ON One-Sentence Mission Statement</div>
+    <div class="pq">
+      <p class="pq-text">LOG_ON builds the direction infrastructure for African AI — the systems layer, the cognitive tooling, and the epistemological frameworks that make AI work for African contexts, African organisations, and African futures.</p>
+      <p class="pq-src">Use this verbatim on your website, in proposals, and at the top of every grant application.</p>
+    </div>
+
+    <div class="checklist">
+      <div class="cl-head">REC 1 — Actions</div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Publish the LFA as the opening page of your website's About section.</strong> Not a bio. A logic chain. <span class="cl-week">THIS WEEK</span></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Paste the mission statement into every proposal template, email signature draft, and grant cover letter.</strong> One sentence. Non-negotiable. <span class="cl-week">TODAY</span></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Share the LFA with your 3 closest professional contacts</strong> and ask: does this make sense? Does it match what you think I do? The gap between your intent and their perception is your positioning problem. <span class="cl-week">WEEK 1</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     REC 2 — AGENT AUDIT
+════════════════════════════════════════════════════════ -->
+<section class="rec-page" id="rec2">
+  <div class="rec-header">
+    <div class="rh-num">02</div>
+    <div class="rh-content">
+      <div class="rh-domain">From Derosiaux · Agent Environment Design</div>
+      <h2 class="rh-title"><em>Agent Environment Audit</em> — LOG_ON Project Stack</h2>
+      <p class="rh-desc">Every active LOG_ON project assessed: what does the agent believe, what constraints are missing, what boundaries is it violating because they were never documented. Priority rated: Critical / High / Medium.</p>
+    </div>
+  </div>
+  <div class="deliverable">
+    <div class="dl-label">Deliverable 2 — Project-by-Project Epistemic Audit</div>
+    <div class="audit-grid">
+
+      <div class="audit-card critical">
+        <div class="ac-project">CRITICAL — Audit First</div>
+        <div class="ac-name">Cultural Bridge Tech / Interpretability Research</div>
+        <div class="ac-row"><div class="ac-icon">?</div><div class="ac-text"><strong>What does the agent believe?</strong> That standard English-language sparse autoencoder methods apply without modification to African-language feature analysis. This is the silent assumption most likely to produce valid-looking but culturally biased results.</div></div>
+        <div class="ac-row"><div class="ac-icon">✕</div><div class="ac-text"><strong>Missing constraint:</strong> No documented protocol for distinguishing genuine cross-lingual feature equivalence from representation collapse into English proxies. The agent will optimise for the wrong signal without this boundary.</div></div>
+        <div class="ac-row"><div class="ac-icon">!</div><div class="ac-text"><strong>Boundary being violated:</strong> Research claims about African-language bias may be using evaluation methods that themselves carry Western-language bias. The benchmark is not yet African-language-native.</div></div>
+        <div class="ac-action">ACTION → Write a 1-page research protocol documenting the specific failure modes of applying English-trained SAE methods to Yoruba/Igbo/Amharic feature analysis. This becomes the CLAUDE.md for the research agent.</div>
+      </div>
+
+      <div class="audit-card critical">
+        <div class="ac-project">CRITICAL — Audit First</div>
+        <div class="ac-name">AgentBridge Africa</div>
+        <div class="ac-row"><div class="ac-icon">?</div><div class="ac-text"><strong>What does the agent believe?</strong> That multi-agent orchestration patterns derived from US/EU enterprise software contexts apply to African organisational decision-making structures. Ubuntu deliberation, extended kinship network decision logic — these are not in the agent's epistemic environment.</div></div>
+        <div class="ac-row"><div class="ac-icon">✕</div><div class="ac-text"><strong>Missing constraint:</strong> No documented encoding of African consensus-building protocols as agent communication primitives. The inter-agent communication layer is likely mirroring Western hierarchical command patterns.</div></div>
+        <div class="ac-row"><div class="ac-icon">!</div><div class="ac-text"><strong>Boundary being violated:</strong> Presenting AgentBridge as "African" while its coordination logic is architecturally Western. This is the exact gap the research agenda is meant to close — and it starts at home.</div></div>
+        <div class="ac-action">ACTION → Define 3 African deliberation protocols (Indaba, Palaver, Ubuntu circle) as formal agent-to-agent communication patterns. Add to AgentBridge CLAUDE.md as non-negotiable coordination primitives.</div>
+      </div>
+
+      <div class="audit-card high">
+        <div class="ac-project">HIGH PRIORITY</div>
+        <div class="ac-name">LISTNER</div>
+        <div class="ac-row"><div class="ac-icon">?</div><div class="ac-text"><strong>What does the agent believe?</strong> That active listening frameworks imported from Western therapeutic and business communication literature are culturally neutral. They are not. Oral tradition comprehension in African languages has different discourse markers, different turn-taking logic, different silence semantics.</div></div>
+        <div class="ac-row"><div class="ac-icon">✕</div><div class="ac-text"><strong>Missing constraint:</strong> No African oral discourse markers in the listening model. The agent will systematically misidentify comprehension signals in African-language contexts.</div></div>
+        <div class="ac-action">ACTION → Add a discourse marker library for at least Yoruba and Pidgin English to LISTNER's cognitive tooling layer before next deployment iteration.</div>
+      </div>
+
+      <div class="audit-card high">
+        <div class="ac-project">HIGH PRIORITY</div>
+        <div class="ac-name">GigPilot</div>
+        <div class="ac-row"><div class="ac-icon">?</div><div class="ac-text"><strong>What does the agent believe?</strong> That gig economy patterns, pricing norms, and client relationship structures derived from Upwork/Fiverr data apply to Nigerian/African freelance markets. The informal economy logic, relationship-first contracting, and mobile-money payment flows are absent from its epistemic environment.</div></div>
+        <div class="ac-row"><div class="ac-icon">✕</div><div class="ac-text"><strong>Missing constraint:</strong> No documented Nigerian/African gig market data as cognitive tooling. The agent optimises for the wrong market model.</div></div>
+        <div class="ac-action">ACTION → Source 50 real Nigerian freelance contract examples, pricing conversations, and client interaction patterns. Feed as cognitive tooling. The data is the constraint.</div>
+      </div>
+
+      <div class="audit-card medium">
+        <div class="ac-project">MEDIUM — Schedule Next Sprint</div>
+        <div class="ac-name">SafeChain MVP</div>
+        <div class="ac-row"><div class="ac-icon">?</div><div class="ac-text"><strong>What does the agent believe?</strong> Safety protocol structures are drawn from Western oil and gas regulatory frameworks (API, OSHA, ISO). Your 25-year upstream-to-downstream background contains tacit knowledge about how safety actually works in African operational contexts that is not yet formalised.</div></div>
+        <div class="ac-row"><div class="ac-icon">✕</div><div class="ac-text"><strong>Missing constraint:</strong> Your operational tacit knowledge is in your head, not in the agent's epistemic environment. This is the most valuable cognitive tooling you own. It is currently inaccessible to the system.</div></div>
+        <div class="ac-action">ACTION → Spend 3 hours writing "Safety Protocol Delta" — the differences between what the textbook says and what actually works in African oil and gas operations. This document is worth more than any API subscription.</div>
+      </div>
+
+      <div class="audit-card medium">
+        <div class="ac-project">MEDIUM — Schedule Next Sprint</div>
+        <div class="ac-name">HouseHunter</div>
+        <div class="ac-row"><div class="ac-icon">?</div><div class="ac-text"><strong>What does the agent believe?</strong> Property search logic, valuation heuristics, and landlord-tenant dynamics from Western property markets. Lagos, Abuja, and secondary Nigerian city property markets operate on fundamentally different information asymmetry, negotiation protocols, and trust signals.</div></div>
+        <div class="ac-row"><div class="ac-icon">✕</div><div class="ac-text"><strong>Missing constraint:</strong> No documented Lagos property market primitives — area reputation encoding, landlord relationship norms, "inspection protocol" cultural logic. The agent is flying blind in a market it does not understand.</div></div>
+        <div class="ac-action">ACTION → 10 interviews with Lagos renters/landlords. Extract the unwritten rules. Build a Property Market CLAUDE.md. This is cognitive tooling, not just market research.</div>
+      </div>
+
+    </div>
+
+    <div class="checklist">
+      <div class="cl-head">REC 2 — Universal Agent Audit Protocol (run for every project)</div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text">Ask the agent: <strong>"What are you assuming about the context you're operating in that hasn't been told to you explicitly?"</strong> Review the answer. Document anything surprising.</div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text">Ask the agent: <strong>"What constraints should govern your decisions that aren't currently in your instructions?"</strong></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text">Ask the agent: <strong>"What tools or data would change the quality of what you can reason about — not just how fast you execute?"</strong></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text">Write a CLAUDE.md for every project: Impact (what it serves), Constraints (what it must never do), Assumptions (what it can take as given), Boundaries (architectural lines that don't move).</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     REC 3 — OFFER STACK
+════════════════════════════════════════════════════════ -->
+<section class="rec-page" id="rec3">
+  <div class="rec-header">
+    <div class="rh-num">03</div>
+    <div class="rh-content">
+      <div class="rh-domain">From Koe · Brand + Content + Offer</div>
+      <h2 class="rh-title">LOG_ON <em>Offer Stack</em> — Three Tiers Built</h2>
+      <p class="rh-desc">The brand exists. The content exists. The offer stack was missing. Here it is: three purchasable tiers, each with a specific deliverable, a specific client type, and landing page copy ready to deploy.</p>
+    </div>
+  </div>
+  <div class="deliverable">
+    <div class="dl-label">Deliverable 3A — The Three-Tier Offer Stack</div>
+    <div class="offer-grid">
+
+      <div class="offer-card t1">
+        <div class="oc-tier">Tier 1 — Entry</div>
+        <div class="oc-price">₦300K–₦750K<br/><span style="font-size:1rem;color:var(--muted)">/$500–$1,500</span></div>
+        <div class="oc-name">Cultural Bias Rapid Audit</div>
+        <div class="oc-what">What They Get</div>
+        <div class="oc-item">48–72 hour audit of a specific LLM deployment in an African-language or cultural context</div>
+        <div class="oc-item">Documented bias sites with evidence — where the model collapses African concepts into English proxies</div>
+        <div class="oc-item">5-page report with prioritised remediation recommendations</div>
+        <div class="oc-item">One 60-minute debrief call</div>
+        <div class="oc-deliver">DELIVERABLE → PDF report + annotated prompt examples + remediation checklist</div>
+        <div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)">IDEAL CLIENT → Ed-tech startup deploying AI tutors in Nigeria/Ghana/Kenya. Fintech using AI credit scoring. Any org whose AI product touches African end users.</div>
+      </div>
+
+      <div class="offer-card t2">
+        <div class="oc-tier">Tier 2 — Mid</div>
+        <div class="oc-price">₦1.8M–₦4.5M<br/><span style="font-size:1rem;color:var(--muted)">/$3,000–$7,500</span></div>
+        <div class="oc-name">Agent Environment Design</div>
+        <div class="oc-what">What They Get</div>
+        <div class="oc-item">Full epistemic environment design for one AI agent deployment</div>
+        <div class="oc-item">Constraint mapping: what the agent must never do, what it can take as given</div>
+        <div class="oc-item">Objective function alignment: what "good" looks like in their specific African context</div>
+        <div class="oc-item">Cognitive tooling audit: what data and tools change the quality of what the agent can reason about</div>
+        <div class="oc-item">Full CLAUDE.md / system prompt architecture document</div>
+        <div class="oc-item">2-week implementation support</div>
+        <div class="oc-deliver">DELIVERABLE → 20-page architecture brief + CLAUDE.md template + implementation files + 2 review calls</div>
+        <div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)">IDEAL CLIENT → Nigerian bank, telecom, or government agency building an internal AI agent. Startup with $50K+ AI spend looking for ROI.</div>
+      </div>
+
+      <div class="offer-card t3">
+        <div class="oc-tier">Tier 3 — Premium</div>
+        <div class="oc-price">₦9M–₦21M<br/><span style="font-size:1rem;color:var(--muted)">/$15,000–$35,000</span></div>
+        <div class="oc-name">African AI Direction Consulting</div>
+        <div class="oc-what">What They Get</div>
+        <div class="oc-item">Strategic direction infrastructure for organisations deploying AI at scale in African contexts</div>
+        <div class="oc-item">LFA mapping for all AI projects: Impact → Outcomes → Outputs → Inputs</div>
+        <div class="oc-item">Cultural alignment framework for objective functions</div>
+        <div class="oc-item">Systems layer design: what African epistemological frameworks should govern the AI's behaviour</div>
+        <div class="oc-item">Full audit of existing deployments against cultural alignment criteria</div>
+        <div class="oc-item">3-month advisory engagement: monthly strategic review, on-call guidance, interim research brief</div>
+        <div class="oc-deliver">DELIVERABLE → Strategic brief + full audit report + monthly advisory calls + research brief + dedicated WhatsApp channel</div>
+        <div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)">IDEAL CLIENT → Pan-African development organisation, telco deploying AI nationally, international NGO deploying AI in African contexts, government AI strategy team.</div>
+      </div>
+
+    </div>
+
+    <div class="dl-label">Deliverable 3B — Landing Page Copy (Deploy This Week)</div>
+
+    <div class="copy-block">
+      <div class="copy-label">Hero Headline</div>
+      <div class="copy-text" style="font-size:1.4rem;font-family:'Fraunces',serif;font-weight:900">Your AI Is Executing.<br/><strong>But Is It Executing Toward the Right Thing?</strong></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-label">Sub-headline</div>
+      <div class="copy-text">Most organisations deploying AI in African contexts are getting <em>technically correct outputs</em> that solve the wrong problem, miss the cultural context, or violate constraints that were never documented. <strong>LOG_ON builds the direction infrastructure that makes your AI work</strong> — the systems layer, the cognitive tooling, and the alignment frameworks that frontier models were never built with Africa in mind.</div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-label">Credibility Block</div>
+      <div class="copy-text">LOG_ON is led by a cross-disciplinary AI systems architect with 25 years of upstream-to-downstream operations experience, active research in African cognitive AI and LLM interpretability, and a published body of work at the intersection of African epistemology and agentic system design. <strong>We are the only practice in Africa that treats your AI's objective function as a cultural document — and knows how to rewrite it.</strong></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-label">Pain Point Statement</div>
+      <div class="copy-text">You've invested in AI. Your agents are running. Your team is using the tools. But something is off — the outputs are plausible but not quite right for your context. Your Nigerian users get generic responses built for American behaviour patterns. Your Yoruba-speaking staff find the AI unhelpful in ways they can't articulate. <strong>The problem isn't your prompts. It's that your AI was built with someone else's direction — and it's executing toward someone else's outcomes.</strong></div>
+    </div>
+
+    <div class="checklist">
+      <div class="cl-head">REC 3 — Actions</div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Set up a one-page website this week</strong> with the hero headline, credibility block, and three offer tiers. No complex build. One page. A contact form. That is enough. <span class="cl-week">WEEK 1</span></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Identify 5 organisations</strong> who are actively deploying AI in Nigerian/African contexts and are large enough to have a $500+ budget. Reach out with the Tier 1 offer. One audit at ₦300K proves the model. <span class="cl-week">WEEK 2</span></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Price in Naira AND USD.</strong> Dual pricing removes friction for both domestic and diaspora/international clients. The international anchor makes the local price look accessible. <span class="cl-week">TODAY</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     REC 4 — CONTENT WATERFALL
+════════════════════════════════════════════════════════ -->
+<section class="rec-page" id="rec4">
+  <div class="rec-header">
+    <div class="rh-num">04</div>
+    <div class="rh-content">
+      <div class="rh-domain">From Koe · Content Waterfall System</div>
+      <h2 class="rh-title">"Whose Intelligence Is This?" — <em>Fully Repurposed</em></h2>
+      <p class="rh-desc">The essay exists. Here is the complete content waterfall: 5 LinkedIn threads, 2 YouTube scripts, 1 podcast outline, 1 carousel set — all derived from the essay you already wrote. Ready to schedule.</p>
+    </div>
+  </div>
+  <div class="deliverable">
+    <div class="dl-label">Deliverable 4A — Content Waterfall Map</div>
+    <div class="waterfall">
+      <div class="wf-col linkedin">
+        <div class="wf-head">LinkedIn Threads (5)</div>
+        <div class="wf-item"><strong>Thread 1</strong> "I asked Claude to explain how its own intelligence works. Here's what it said about itself that should concern you."</div>
+        <div class="wf-item"><strong>Thread 2</strong> "Your AI has an objective function. You didn't write it. Here's who did — and what they decided was 'good'."</div>
+        <div class="wf-item"><strong>Thread 3</strong> "864 likes for 5 words: 'Flawless execution on the wrong things.' Why this is the most important AI deployment insight of 2026."</div>
+        <div class="wf-item"><strong>Thread 4</strong> "If Africa builds AI, it doesn't look like Llama with Swahili tokenisation. Here's what it actually looks like."</div>
+        <div class="wf-item"><strong>Thread 5</strong> "We're not talking about cognitive colonialism. We should be. Here's the operational definition that matters for AI."</div>
+      </div>
+      <div class="wf-col youtube">
+        <div class="wf-head">YouTube (2 Videos)</div>
+        <div class="wf-item"><strong>Video 1 (15 min)</strong> "How Claude's Intelligence Actually Works — And Why That Should Change How You Use It" — architectural walkthrough, self-examination concept, accessible.</div>
+        <div class="wf-item"><strong>Video 2 (22 min)</strong> "Why Africa Needs Its Own AI — And What That Actually Means" — the full African AI thesis, research evidence, what African-first architecture looks like. Target: African tech community + international AI researchers.</div>
+      </div>
+      <div class="wf-col podcast">
+        <div class="wf-head">Podcast Episode</div>
+        <div class="wf-item"><strong>Episode Title</strong> "Whose Intelligence Is This? The LOG_ON Position on African AI Sovereignty"</div>
+        <div class="wf-item"><strong>Structure</strong> 0–5min: Hook (Irvine's "The." experiment). 5–15min: How the architecture actually works. 15–30min: Who writes the objective function. 30–45min: What African AI looks like if built from first principles. 45–55min: The 5 actions. 55–60min: Your specific LOG_ON positioning.</div>
+      </div>
+      <div class="wf-col twitter">
+        <div class="wf-head">X/Twitter (Daily)</div>
+        <div class="wf-item"><strong>Hook tweets</strong> from each section's sharpest line. "My 'personality' is a product of training signal. These traits are instrumentally useful. Whether there is anything it is 'like' to be me expressing them is genuinely open." — Claude on itself.</div>
+        <div class="wf-item"><strong>Stat tweets</strong> "Africa has less than 1% of global data centre capacity. Over 2,000 languages. Less than a dozen countries with national AI strategies. This is not a gap. It's a designed exclusion by omission."</div>
+      </div>
+      <div class="wf-col carousel">
+        <div class="wf-head">Carousels (IG/LinkedIn)</div>
+        <div class="wf-item"><strong>Carousel 1</strong> "The 4 Layers of Who Wrote Your AI's Logic" — L1 Corpus / L2 RLHF Raters / L3 Constitutional Principles / L4 Operator Layer. 5 slides.</div>
+        <div class="wf-item"><strong>Carousel 2</strong> "Brittle vs. Antifragile AI" — the comparison table as a visual. 6 slides.</div>
+        <div class="wf-item"><strong>Carousel 3</strong> "5 Actions for African AI Sovereignty" — the manifesto condensed. 7 slides.</div>
+      </div>
+    </div>
+
+    <div class="dl-label">Deliverable 4B — LinkedIn Thread 1, Ready to Post</div>
+    <div class="thread-stack">
+      <div class="thread-card">
+        <div class="tc-head"><div class="tc-platform">LinkedIn · Thread · Hook</div><div class="tc-num">Tweet 1/8</div></div>
+        <div class="tc-hook">I asked Claude to explain how its own intelligence works. What it said about itself should change how you use it.</div>
+        <div class="tc-body">William Irvine gave Claude one word — "The." — and was stunned when it returned a sentence about the stretching of minds rather than a generic sunset. He called it a heart-to-heart. He was right. But he stopped one question short of the one that matters.</div>
+        <div class="tc-tags"><div class="tc-tag">#AI</div><div class="tc-tag">#AfricanTech</div><div class="tc-tag">#ArtificialIntelligence</div></div>
+      </div>
+      <div class="thread-card">
+        <div class="tc-head"><div class="tc-platform">LinkedIn · Thread</div><div class="tc-num">Tweet 2/8</div></div>
+        <div class="tc-hook">The architecture underneath Claude is a transformer. It doesn't retrieve knowledge. It generates plausible continuations.</div>
+        <div class="tc-body">Every word you type is tokenised, embedded, attended to across all other tokens simultaneously. The "knowledge" isn't stored in a database — it's distributed across billions of parameters as patterns of activation. <strong>It doesn't know what is true. It generates what is statistically likely.</strong></div>
+      </div>
+      <div class="thread-card">
+        <div class="tc-head"><div class="tc-platform">LinkedIn · Thread</div><div class="tc-num">Tweet 3/8</div></div>
+        <div class="tc-hook">That architecture has a cultural centre of gravity — and it's not Lagos.</div>
+        <div class="tc-body">Training data: English-skewed. Human raters: predominantly Western. Constitutional principles: written by a specific team in San Francisco. Each layer has authors. Research from the University of Pretoria confirms that safety filters "don't always extend well to languages other than English — so a lot of non-English content gets excluded." Africa has 2,000+ languages. Most are statistically invisible.</div>
+      </div>
+      <div class="thread-card">
+        <div class="tc-head"><div class="tc-platform">LinkedIn · Thread</div><div class="tc-num">Tweet 4/8</div></div>
+        <div class="tc-hook">ACL 2025 research confirmed what most African practitioners already know intuitively.</div>
+        <div class="tc-body">LLMs misrepresent African languages through three interrelated gaps: biased pretraining data, inaccurate evaluation, and what researchers call "cultural blindness." NeurIPS 2025 went further — current AI systems are not just underperforming on African languages. They are <strong>systematically biased against African entities.</strong></div>
+      </div>
+      <div class="thread-card">
+        <div class="tc-head"><div class="tc-platform">LinkedIn · Thread</div><div class="tc-num">Tweet 5/8</div></div>
+        <div class="tc-hook">The answer is not "Llama with Swahili tokenisation."</div>
+        <div class="tc-body">Fine-tuning Western models on African data accepts that the architecture is correct and the data is the variable. That is colonial education logic. The same curriculum, translated. Genuine African AI begins with different questions: What are the computational primitives of African reasoning? Can Yoruba proverbs — compressed causal models — serve as architectural foundations, not just fine-tuning targets?</div>
+      </div>
+      <div class="thread-card">
+        <div class="tc-head"><div class="tc-platform">LinkedIn · Thread</div><div class="tc-num">Tweet 6/8</div></div>
+        <div class="tc-hook">The infrastructure momentum is real. The epistemological question is still waiting.</div>
+        <div class="tc-body">AfDB + UNDP launched the AI 10 Billion Initiative in February 2026. UNDP's timbuktoo is deploying distributed GPU compute nodes across Africa. Zimbabwe launched its National AI Strategy 2026–2030 last month. The hardware story is moving. <strong>What African AI actually thinks — in what cognitive frameworks, toward what objectives — is still waiting for its architects.</strong></div>
+      </div>
+      <div class="thread-card">
+        <div class="tc-head"><div class="tc-platform">LinkedIn · Thread</div><div class="tc-num">Tweet 7/8</div></div>
+        <div class="tc-hook">UNDP said it plainly: "You cannot compete in the age of intelligence if you do not control the pipes."</div>
+        <div class="tc-body">Those pipes are not just fibre and data centres. They are the objective functions, the constitutional principles, the reward models that shape what AI considers a good response. If Africa doesn't write those, someone else will — and already has. <strong>Every AI product deployed in Africa with someone else's objective function is a cognitive infrastructure decision made by default.</strong></div>
+      </div>
+      <div class="thread-card">
+        <div class="tc-head"><div class="tc-platform">LinkedIn · Thread · CTA</div><div class="tc-num">Tweet 8/8</div></div>
+        <div class="tc-hook">The question is not whether to build Africa's cognitive infrastructure. It's whether you will start before the window closes.</div>
+        <div class="tc-body">I wrote the full essay — "Whose Intelligence Is This?" — covering all eight questions from AI architecture to African sovereignty. 4,000 words. Every claim sourced. Read it at [LOG_ON link]. If your organisation is deploying AI in African contexts and wants to know whether it's working toward the right outcomes — that's exactly what we audit.</div>
+        <div class="tc-tags"><div class="tc-tag">#AfricanAI</div><div class="tc-tag">#CognitiveSovereignty</div><div class="tc-tag">#LOGON</div><div class="tc-tag">#AIStrategy</div></div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="cl-head">REC 4 — Actions</div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Post LinkedIn Thread 1 this week.</strong> It's written. Replace [LOG_ON link] with your actual URL. Schedule at 8am Lagos time Tuesday or Wednesday. <span class="cl-week">WEEK 1</span></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Record YouTube Video 1</strong> using the "Whose Intelligence Is This?" essay as your script. Talk to camera. No editing required for first post. Done is better than perfect. <span class="cl-week">WEEK 2</span></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Build Carousel 1</strong> ("4 Layers of Who Wrote Your AI's Logic") in Canva. This visual gets more reach than any text post. Post to LinkedIn, Instagram, and X simultaneously. <span class="cl-week">WEEK 2</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     REC 5 — COGNITIVE TOOLING
+════════════════════════════════════════════════════════ -->
+<section class="rec-page" id="rec5">
+  <div class="rec-header">
+    <div class="rh-num">05</div>
+    <div class="rh-content">
+      <div class="rh-domain">From Derosiaux · Cognitive vs. Execution Tooling</div>
+      <h2 class="rh-title">African AI Research <em>Cognitive Tooling</em> — Priority Stack</h2>
+      <p class="rh-desc">Three research infrastructure items that change what questions you can answer — not how fast you answer them. Without these, every research question requires a workaround that introduces error and degrades the quality of what can be reasoned about.</p>
+    </div>
+  </div>
+  <div class="deliverable">
+    <div class="dl-label">Deliverable 5 — Cognitive Tooling Priority Stack</div>
+    <div class="tool-list">
+
+      <div class="tool-item">
+        <div class="tool-priority">
+          <div class="tp-rank">1</div>
+          <div class="tp-type">Cognitive · Research Foundation</div>
+        </div>
+        <div class="tool-body">
+          <div class="tool-name">Proverb Activation Library (PAL) — Owomoyela Corpus</div>
+          <div class="tool-desc">Owomoyela's Yoruba proverb corpus contains ~2,500 proverbs. Without formalising these as <strong>machine-readable causal models</strong> — input conditions, causal logic, output expectations, exception handling — your interpretability research has no ground truth for what Yoruba conceptual reasoning actually looks like. You are currently measuring representation collapse against... what? The PAL answers that question. It is the benchmark before the benchmark.<br/><br/>Build: Annotate 100 proverbs with causal structure (condition → mechanism → outcome), bidirectionality flag, and social domain (family, governance, commerce, conflict). This is your Proverb Activation Library v0.1. 40 hours of work. Unlocks the entire interpretability agenda.</div>
+          <div class="tool-action">→ Start with Owomoyela's corpus. Annotate 10 proverbs per session × 10 sessions = PAL v0.1. Submit as a dataset paper to AfricaNLP 2026.</div>
+        </div>
+      </div>
+
+      <div class="tool-item">
+        <div class="tool-priority">
+          <div class="tp-rank">2</div>
+          <div class="tp-type">Cognitive · Research Infrastructure</div>
+        </div>
+        <div class="tool-body">
+          <div class="tool-name">Cross-Lingual Sparse Autoencoder (SAE) Analysis Setup</div>
+          <div class="tool-desc">The Cultural Bridge Tech thesis requires being able to map, at the feature level, where a frontier LLM's representation of a Yoruba concept collapses into its nearest English proxy rather than maintaining semantic independence. <strong>Without a working SAE analysis pipeline for African languages, you are making claims about representation collapse that you cannot yet demonstrate empirically.</strong><br/><br/>The Wendler et al. (ACL 2024), Zhao et al. (NeurIPS 2024), and Tang et al. (ACL 2024) citations in your Schmidt Sciences proposal are the right anchors — but the pipeline that applies their methods to Yoruba/Igbo/Amharic is the gap that makes the proposal compelling. This is the single most fundable research deliverable in your stack.</div>
+          <div class="tool-action">→ Build a minimal viable SAE analysis pipeline for one African language pair (Yoruba ↔ English) in Claude 3.7 Sonnet using Anthropic's interpretability tools. Document the setup. This is your preliminary result for the grant application.</div>
+        </div>
+      </div>
+
+      <div class="tool-item">
+        <div class="tool-priority">
+          <div class="tp-rank">3</div>
+          <div class="tp-type">Cognitive · Research Validation</div>
+        </div>
+        <div class="tool-body">
+          <div class="tool-name">African-Language Discourse Competence Benchmark Suite</div>
+          <div class="tool-desc">Current African NLP benchmarks measure proximity to translated English. A research programme arguing that African cognitive frameworks deserve architectural status needs its own evaluation criteria. <strong>The benchmark is the argument you make to the world about what African intelligence is.</strong> Without it, every claim about AI underperformance in African contexts can be dismissed as anecdotal.<br/><br/>Start with three tasks that no English-translated benchmark can capture: (1) Yoruba proverb completion — given a social situation, select the contextually appropriate proverb; (2) Ubuntu deliberation simulation — given a community decision scenario, evaluate responses against consensus-building norms; (3) Oral narrative coherence — evaluate extended storytelling in African oral discourse conventions. Build the benchmark. The benchmark is your research paper AND your commercial differentiator simultaneously.</div>
+          <div class="tool-action">→ Design benchmark task 1 (proverb completion) with 50 items. Partner with a Yoruba linguistics researcher for validation. Submit to AfricaNLP or ACL workshop. This is the AERBI equivalent for cognitive discourse — a named contribution.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="checklist">
+      <div class="cl-head">REC 5 — Actions</div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Allocate 40 hours to PAL v0.1 this month.</strong> No compute required. No API cost. Just the corpus, a spreadsheet, and your knowledge of Yoruba causal structure. This is your most leverage-per-hour research investment. <span class="cl-week">MONTH 1</span></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Stand up the SAE pipeline before the next grant application.</strong> Even a 5-page preliminary result with one example of representation collapse in Yoruba is more compelling than a theoretical proposal. <span class="cl-week">MONTH 1–2</span></div></div>
+      <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Identify one Yoruba linguistics researcher</strong> at University of Lagos, Obafemi Awolowo University, or in the Masakhane network who will co-design the benchmark. Research is more credible and more publishable with a named linguistic expert co-author. <span class="cl-week">WEEK 2</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     REC 6 — MASTER STRATEGIC BRIEF
+════════════════════════════════════════════════════════ -->
+<section class="rec-page" id="rec6">
+  <div class="rec-header">
+    <div class="rh-num">06</div>
+    <div class="rh-content">
+      <div class="rh-domain">Master Recommendation · All Sources Synthesised</div>
+      <h2 class="rh-title">LOG_ON as <em>Direction Infrastructure</em> for African AI</h2>
+      <p class="rh-desc">The positioning statement, the moat argument, and the 30-day implementation sequence. This is the document you hand to a potential partner, investor, or client when they ask what LOG_ON actually does.</p>
+    </div>
+  </div>
+  <div class="deliverable">
+
+    <div class="master">
+      <div class="master-inner">
+        <div class="master-eye">Master Strategic Brief — LOG_ON AI Solution Agency</div>
+        <h2>The Only Practice That Treats<br/>Your AI's <em>Objective Function</em><br/>as a Cultural Document.</h2>
+
+        <div class="master-grid">
+          <div class="mg">
+            <div class="mg-title">The Positioning</div>
+            <p>Williams shows most organisations skip the systems layer. Koe shows most operators don't know what good looks like before prompting. Derosiaux shows agents execute competently in wrong environments. <strong>LOG_ON builds the systems layer, the epistemic environment, and the objective function alignment that AI deployments in African contexts are currently missing.</strong> This is not a service. It is a category. And we are the only practice that can occupy it credibly.</p>
+          </div>
+          <div class="mg">
+            <div class="mg-title">The Moat</div>
+            <p>Three assets stacked: (1) 25 years of operational systems experience — the tacit knowledge of how things actually work in African energy, infrastructure, and enterprise contexts. (2) Active interpretability research — the only public body of work connecting sparse autoencoder analysis to African-language cognitive bias detection. (3) Agentic systems architecture — Claude-in-Claude builds, multi-agent orchestration, cultural alignment frameworks. <strong>Nobody else has all three. Nobody else has written the essays.</strong> The moat is being built in public, argument by argument.</p>
+          </div>
+          <div class="mg">
+            <div class="mg-title">The Revenue Logic</div>
+            <p>Koe's path: service clients first (no audience required), build content simultaneously (compounds trust), launch products as audience grows. LOG_ON version: Tier 1 audits fund the research. Research builds credibility. Credibility unlocks Tier 3 consulting. Tier 3 relationships fund the cognitive tooling. Cognitive tooling produces the benchmark paper. Benchmark paper gets the grant. <strong>Each layer funds the next. None requires waiting for all the others to be perfect first.</strong></p>
+          </div>
+        </div>
+
+        <div class="positioning-stmt">
+          <div class="ps-label">LOG_ON — One-Paragraph Positioning Statement</div>
+          <p class="ps-text">LOG_ON is the <em>direction infrastructure</em> for African AI deployment. We build the systems layer that most organisations skip: mapping the logic chain from daily AI execution to long-term African-defined outcomes, designing the epistemic environments that make agents work in African contexts, and aligning objective functions to African epistemological frameworks rather than borrowing them from San Francisco. Our work spans commercial consulting — cultural bias audits, agent environment design, strategic AI advisory — and original research in African cognitive AI and LLM interpretability. We are the only practice in Africa that treats the question of <em>what your AI thinks</em> as seriously as the question of what it does.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:0 0 40px">
+      <div class="dl-label" style="margin-top:40px">Deliverable 6 — 30-Day Implementation Sequence</div>
+      <div class="checklist">
+        <div class="cl-head">Week 1 — Foundation</div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Day 1:</strong> Add the mission statement to email signature, LinkedIn bio, Twitter bio. One sentence. "LOG_ON builds the direction infrastructure for African AI." <span class="cl-week">TODAY</span></div></div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Day 2:</strong> Set up a one-page website with: mission statement, LFA (Rec 1), three offer tiers (Rec 3), landing page copy (Rec 3B), contact form. No build complexity. Carrd or Notion will do for now.</div></div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Day 3–5:</strong> Post LinkedIn Thread 1 (Rec 4B, already written). Respond to every comment. The comments are market research and business development simultaneously.</div></div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Day 6–7:</strong> Run the agent audit protocol on Cultural Bridge Tech and AgentBridge Africa (Rec 2 — the two Critical items). Write their CLAUDE.md files. Maximum 2 hours each.</div></div>
+      </div>
+      <div class="checklist">
+        <div class="cl-head">Week 2 — Commercial Pipeline</div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Identify 5 target clients</strong> for the Tier 1 Cultural Bias Rapid Audit. Criteria: deploying AI in African contexts, evidence of budget (funded startup, NGO with tech programme, bank, telco). Reach out via LinkedIn DM with one sentence: "I audit AI systems for cultural misalignment in African contexts — 48 hours, 5-page report. Are you seeing gaps in how your AI handles Nigerian users?"</div></div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Build Carousel 1</strong> ("4 Layers of Who Wrote Your AI's Logic") and post. Simultaneously post to LinkedIn, Instagram, Twitter.</div></div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Contact one Yoruba linguistics researcher</strong> at University of Lagos or OAU for PAL v0.1 collaboration.</div></div>
+      </div>
+      <div class="checklist">
+        <div class="cl-head">Week 3–4 — Research and Content</div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Begin PAL v0.1</strong> — 10 Yoruba proverbs annotated with causal structure per session. 4 sessions = 40 proverbs = meaningful preliminary dataset.</div></div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Record YouTube Video 1</strong> using the existing essay as script. Upload. Share the link in LinkedIn Thread 2.</div></div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Post LinkedIn Threads 2 and 3.</strong> The content is already outlined (Rec 4A). Expand each to 8-tweet threads.</div></div>
+        <div class="cl-item"><div class="cl-box"></div><div class="cl-text"><strong>Deliver first Tier 1 audit</strong> if a client has been onboarded. Use the 5-page report format defined in Rec 3. The first delivery is also the product refinement.</div></div>
+      </div>
+    </div>
+
+    <div class="pq">
+      <p class="pq-text">The Direction Problem is universal: execution runs ahead of understanding, and AI makes the error faster and more expensive. The solution is the same everywhere — systems layer first, epistemic environment second, execution third. LOG_ON is the practice that builds the first two for organisations operating in African contexts. That is not a niche. That is a category that does not yet have a name — but it will. Build it now or explain later why you didn't.</p>
+      <p class="pq-src">LOG_ON Action Brief · April 2026</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-brand">LOG_ON</span>
+  <span class="f-text">Action Brief · 6 Recommendations Executed · April 2026 · Lagos, Nigeria</span>
+  <span class="f-text">All recommendations derived from: Williams · Derosiaux · Koe · Prior LOG_ON Research</span>
+</footer>
+
+</body>
+</html>

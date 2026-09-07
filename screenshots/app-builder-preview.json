@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "LOG_ON — Direction Infrastructure for African AI",
+      "hasCanvas": false,
+      "bodyTextLen": 4929,
+      "bodyTextHash": "9a029aac5d3bd1ea7346a0037e6440535b8fc2dff21269e4bf27db0ac0a31aba",
+      "bodyTextPrefix": "LOG_ON Home Action Brief Mind Map Essay Execute Contact LOG_ON A",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "LOG_ON — Direction Infrastructure for African AI",
+      "hasCanvas": false,
+      "bodyTextLen": 4880,
+      "bodyTextHash": "9cd8729d7a74c5d39905e29bc49110240f2476c03c8fc5ab00ca1a355d7ddf88",
+      "bodyTextPrefix": "LOG_ON LOG_ON AI SOLUTION AGENCY · LAGOS, NIGERIA Your AI Is Exe",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

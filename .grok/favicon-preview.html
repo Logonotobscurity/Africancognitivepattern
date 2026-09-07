@@ -1,0 +1,17 @@
+<!doctype html><html><body style="margin:0;background:#111">
+<canvas id="c16" width="16" height="16" style="image-rendering:pixelated"></canvas>
+<canvas id="c32" width="32" height="32" style="image-rendering:pixelated;margin-left:8px"></canvas>
+<canvas id="c64" width="64" height="64" style="image-rendering:pixelated;margin-left:8px"></canvas>
+<img id="s" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%0A%20%20%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%226%22%20fill%3D%22%2308090A%22%2F%3E%0A%20%20%3Cpath%20fill%3D%22%23D4952A%22%20d%3D%22M9%207h6v12h8v5H9z%22%2F%3E%0A%20%20%3Crect%20x%3D%229%22%20y%3D%2226%22%20width%3D%2214%22%20height%3D%223%22%20rx%3D%220.5%22%20fill%3D%22%23D4952A%22%2F%3E%0A%3C%2Fsvg%3E%0A" width="128" height="128">
+<script>
+const img = document.getElementById('s');
+img.onload = () => {
+  for (const id of ['c16','c32','c64']) {
+    const c = document.getElementById(id);
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, c.width, c.height);
+  }
+  document.title = 'ready';
+};
+</script>
+</body></html>
