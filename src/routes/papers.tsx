@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Download, FileText } from "lucide-react";
 import { Eyebrow, SectionLabel } from "@/components/site-shell";
+import { MermaidDiagram } from "@/components/mermaid-diagram";
 
 export const Route = createFileRoute("/papers")({
   component: PapersPage,
@@ -18,6 +19,13 @@ const papers = [
       "Critical analysis of how standard AI benchmarks fail to capture African cognitive frameworks and cultural competence.",
     docx: "/papers/benchmark_paradox_paper.docx",
     md: "/papers/benchmark_paradox_paper.md",
+    pipeline: `flowchart TD
+    A[Standard Benchmarks] --> B{Bias Detection}
+    B -->|Detected| C[Cultural Framework Gap]
+    C --> D[New Metrics Design]
+    D --> E[African Cognitive Evaluation]
+    style A fill:#78350f,stroke:#f59e0b
+    style E fill:#d97706,stroke:#fbbf24`,
   },
   {
     id: "cultural-bridge",
@@ -27,6 +35,14 @@ const papers = [
       "Sparse autoencoder feature analysis detecting where frontier LLMs collapse African concepts into English proxies.",
     docx: "/papers/cultural_bridge_sae_analysis.docx",
     md: "/papers/cultural_bridge_sae_analysis.md",
+    pipeline: `flowchart LR
+    A[LLM Input] --> B[African Concept]
+    B --> C{Autoencoder Analysis}
+    C -->|Feature Collapse| D[English Proxy]
+    C -->|Feature Preserved| E[Cultural Bridge]
+    E --> F[Interpretability Map]
+    style B fill:#d97706,stroke:#fbbf24
+    style F fill:#78350f,stroke:#f59e0b`,
   },
   {
     id: "schmidt-2026",
@@ -36,6 +52,13 @@ const papers = [
       "Research proposal for African cognitive AI infrastructure and interpretability research.",
     docx: "/papers/schmidt_2026_proposal_REVISED_final.docx",
     md: "/papers/schmidt_2026_proposal_REVISED_final.md",
+    pipeline: `flowchart TD
+    A[Research Goals] --> B[Infrastructure Design]
+    B --> C[Interpretability Methods]
+    C --> D[Cultural Sovereignty]
+    D --> E[2026 Deliverables]
+    style A fill:#78350f,stroke:#f59e0b
+    style E fill:#d97706,stroke:#fbbf24`,
   },
   {
     id: "schmidt-compliance",
@@ -45,6 +68,14 @@ const papers = [
       "Comprehensive audit of alignment with Schmidt Sciences programme requirements and objectives.",
     docx: "/papers/schmidt_compliance_audit.docx",
     md: "/papers/schmidt_compliance_audit.md",
+    pipeline: `flowchart TD
+    A[Requirements] --> B{Compliance Check}
+    B -->|Aligned| C[Approved]
+    B -->|Gap| D[Remediation Plan]
+    D --> B
+    C --> E[Final Audit Report]
+    style B fill:#d97706,stroke:#fbbf24
+    style E fill:#78350f,stroke:#f59e0b`,
   },
   {
     id: "smme-audit",
@@ -54,6 +85,13 @@ const papers = [
       "Analysis of small, medium and micro enterprise opportunities in African agentic AI deployment.",
     docx: "/papers/smme_agentic_ai_research_audit.docx",
     md: "/papers/smme_agentic_ai_research_audit.md",
+    pipeline: `flowchart LR
+    A[SMME Sector] --> B[AI Fit Assessment]
+    B --> C[Opportunity Mapping]
+    C --> D[Deployment Strategy]
+    D --> E[Economic Impact Model]
+    style A fill:#78350f,stroke:#f59e0b
+    style E fill:#d97706,stroke:#fbbf24`,
   },
   {
     id: "study1-discourse",
@@ -63,6 +101,13 @@ const papers = [
       "Study 1 examining the relationship between African-language discourse patterns and AI comprehension metrics.",
     docx: "/papers/study1_does_discourse_structure_determine_comprehension.docx",
     md: "/papers/study1_does_discourse_structure_determine_comprehension.md",
+    pipeline: `flowchart TD
+    A[Language Text] --> B[Discourse Analysis]
+    B --> C[Pattern Extraction]
+    C --> D[Comprehension Testing]
+    D --> E[Correlation Metrics]
+    style B fill:#d97706,stroke:#fbbf24
+    style E fill:#78350f,stroke:#f59e0b`,
   },
   {
     id: "study2-proverb",
@@ -72,6 +117,13 @@ const papers = [
       "Study 2 building ground-truth datasets for Yoruba reasoning primitives through proverb activation analysis.",
     docx: "/papers/study2_toward_a_proverb_activation_library.docx",
     md: "/papers/study2_toward_a_proverb_activation_library.md",
+    pipeline: `flowchart LR
+    A[Yoruba Proverbs] --> B[Activation Analysis]
+    B --> C[Feature Clustering]
+    C --> D[Reasoning Primitives]
+    D --> E[Validation Library]
+    style A fill:#d97706,stroke:#fbbf24
+    style E fill:#78350f,stroke:#f59e0b`,
   },
   {
     id: "whose-intelligence",
@@ -81,6 +133,14 @@ const papers = [
       "Foundational position paper on African AI sovereignty and the epistemological frameworks governing objective functions.",
     docx: "/papers/whose-intelligence-is-this.docx",
     md: "/papers/whose-intelligence-is-this.md",
+    pipeline: `flowchart TD
+    A[Current AI Paradigm] --> B{Values Embedded}
+    B -->|Western| C[Epistemic Violence]
+    B -->|African| D[Cognitive Sovereignty]
+    C --> E[Call for Sovereignty]
+    D --> E
+    style B fill:#d97706,stroke:#fbbf24
+    style E fill:#78350f,stroke:#f59e0b`,
   },
   {
     id: "research-ideas",
@@ -90,6 +150,13 @@ const papers = [
       "Collection of research directions, methodologies, and proposals for advancing African cognitive AI.",
     docx: "/papers/research_ideas_proposals_african_cognitive_ai.docx",
     md: "/papers/research_ideas_proposals_african_cognitive_ai.md",
+    pipeline: `flowchart TD
+    A[Research Directions] --> B[Methodologies]
+    B --> C[Proposal Development]
+    C --> D[Funding Strategy]
+    D --> E[African Cognitive AI]
+    style A fill:#78350f,stroke:#f59e0b
+    style E fill:#d97706,stroke:#fbbf24`,
   },
   {
     id: "agentbridge-spec",
@@ -99,6 +166,13 @@ const papers = [
       "Technical architecture document for multi-agent orchestration with African deliberation protocols.",
     docx: null,
     md: "/papers/11_agentbridge_agentbase_spec.md",
+    pipeline: `flowchart LR
+    A[Query Input] --> B[Router Agent]
+    B --> C[Deliberation Protocol]
+    C --> D[Consensus Engine]
+    D --> E[Output Generation]
+    style B fill:#d97706,stroke:#fbbf24
+    style E fill:#78350f,stroke:#f59e0b`,
   },
 ] as const;
 
@@ -143,21 +217,21 @@ function PapersPage() {
       </section>
 
       <section className="border-b border-border px-4 py-16 sm:px-10 sm:py-20">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-6xl">
           <SectionLabel>Papers & Publications</SectionLabel>
           <p className="mb-10 max-w-2xl text-[0.97rem] text-body">
             Our research spans interpretability analysis, empirical studies, grant proposals, and technical specifications.
-            Download any paper in DOCX format for citation or MD format for reading.
+            Each paper includes a visual pipeline diagram showing the research methodology.
           </p>
           
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 gap-6">
             {papers.map((paper) => (
               <article
                 key={paper.id}
                 className="group border border-border bg-surface p-6 transition-colors hover:border-amber"
               >
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="flex-1">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                  <div className="lg:col-span-2">
                     <div className="mb-2 flex items-center gap-3">
                       <FileText className="size-5 text-amber" />
                       <span className="font-mono text-[10px] font-bold tracking-[0.2em] text-amber uppercase">
@@ -168,30 +242,41 @@ function PapersPage() {
                       {paper.title}
                     </h3>
                     <p className="mt-2 text-sm text-body">{paper.description}</p>
+                    
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {paper.docx && (
+                        <a
+                          href={paper.docx}
+                          download
+                          className="inline-flex min-h-10 items-center gap-2 bg-amber px-4 font-mono text-[11px] font-bold tracking-[0.15em] text-void uppercase transition-colors hover:bg-amber-bright"
+                        >
+                          <Download className="size-4" />
+                          Download DOCX
+                        </a>
+                      )}
+                      {paper.md && (
+                        <a
+                          href={paper.md}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-10 items-center gap-2 border border-amber-dim px-4 font-mono text-[11px] font-bold tracking-[0.15em] text-amber uppercase transition-colors hover:border-amber hover:bg-amber-pale"
+                        >
+                          <FileText className="size-4" />
+                          Read Markdown
+                        </a>
+                      )}
+                    </div>
                   </div>
                   
-                  <div className="flex shrink-0 flex-col gap-2 sm:items-end">
-                    {paper.docx && (
-                      <a
-                        href={paper.docx}
-                        download
-                        className="inline-flex min-h-10 items-center gap-2 bg-amber px-4 font-mono text-[11px] font-bold tracking-[0.15em] text-void uppercase transition-colors hover:bg-amber-bright"
-                      >
-                        <Download className="size-4" />
-                        Download DOCX
-                      </a>
-                    )}
-                    {paper.md && (
-                      <a
-                        href={paper.md}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex min-h-10 items-center gap-2 border border-amber-dim px-4 font-mono text-[11px] font-bold tracking-[0.15em] text-amber uppercase transition-colors hover:border-amber hover:bg-amber-pale"
-                      >
-                        <FileText className="size-4" />
-                        Read Markdown
-                      </a>
-                    )}
+                  <div className="lg:col-span-1">
+                    <div className="rounded-lg border border-border bg-void p-4">
+                      <p className="mb-3 font-mono text-[9px] font-bold tracking-[0.2em] text-amber uppercase">
+                        Research Pipeline
+                      </p>
+                      <div className="flex items-center justify-center">
+                        <MermaidDiagram chart={paper.pipeline} className="w-full" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </article>
